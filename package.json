@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "scripts": {
-    "prebuild:server": "chmod +x ./node_modules/.bin/vite || true",
+    "prebuild:server": "chmod +x ./node_modules/.bin/vite ./node_modules/.bin/esbuild || true",
     "build:server": "npm run prebuild:server && npx vite build && npx esbuild index.ts --platform=node --bundle --format=esm --outdir=dist --external:lightningcss",
     "build": "npm run build:server",
     "start": "NODE_ENV=production node dist/index.js"
