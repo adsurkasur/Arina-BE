@@ -98,9 +98,7 @@
     "@vitejs/plugin-react": "latest",
     "autoprefixer": "latest",
     "drizzle-kit": "latest",
-    "esbuild": {
-      "external": ["lightningcss"]
-    },
+    "esbuild": "latest",
     "postcss": "latest",
     "tailwindcss": "latest",
     "tsx": "latest",
