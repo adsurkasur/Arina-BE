@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "prebuild:server": "chmod +x ./node_modules/.bin/vite ./node_modules/.bin/esbuild || true",
-    "build:server": "npm run prebuild:server && npx vite build && npx esbuild index.ts --platform=node --bundle --format=esm --outdir=dist --external:lightningcss --external:node:events --external:node:path --external:node:fs --external:node:http --external:node:url",
+    "build:server": "npx vite build",
     "build": "npm run build:server",
     "start": "NODE_ENV=production node dist/index.js"
   },
