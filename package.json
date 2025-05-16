@@ -7,6 +7,11 @@
     "start": "NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
+    "@types/express": "^5.0.1",
+    "@types/mongodb": "^4.0.6",
+    "@types/nanoid": "^2.1.0",
+    "@types/node": "^22.15.18",
+    "@types/uuid": "^10.0.0",
     "arina-shared": "github:adsurkasur/Arina-SharedPackage",
     "esbuild": "^0.25.4",
     "express": "^5.1.0",
