@@ -1,6 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "prebuild:server": "chmod +x ./node_modules/.bin/vite ./node_modules/.bin/esbuild || true",
     "build:server": "npm run prebuild:server && npx vite build && npx esbuild index.ts --platform=node --bundle --format=esm --outdir=dist --external:lightningcss",
