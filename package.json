@@ -2,9 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "scripts": {
-    "build:server": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build:server": "npx vite build && npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "build": "npm run build:server",
-    "start": "NODE_ENV=production node dist/index.js"
+    "start": "NODE_ENV=production node dist/index.js",
+    "postinstall": "chmod +x node_modules/.bin/vite node_modules/.bin/esbuild || true"
   },
   "dependencies": {
     "arina-shared": "git+https://github.com/adsurkasur/Arina-SharedPackage.git",
