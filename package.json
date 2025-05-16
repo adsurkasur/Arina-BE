@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "scripts": {
-    "build:server": "chmod +x node_modules/.bin/vite node_modules/.bin/esbuild || true && npx vite build && npx esbuild index.ts --platform=node --bundle --format=esm --outdir=dist",
+    "build:server": "npx vite build && npx esbuild index.ts --platform=node --bundle --format=esm --outdir=dist --external:lightningcss",
     "build": "npm run build:server",
     "start": "NODE_ENV=production node dist/index.js"
   },
@@ -98,7 +98,9 @@
     "@vitejs/plugin-react": "latest",
     "autoprefixer": "latest",
     "drizzle-kit": "latest",
-    "esbuild": "latest",
+    "esbuild": {
+      "external": ["lightningcss"]
+    },
     "postcss": "latest",
     "tailwindcss": "latest",
     "tsx": "latest",
