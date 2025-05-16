@@ -7,9 +7,15 @@
     "start": "NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
-    "arina-shared": "git+https://github.com/adsurkasur/Arina-SharedPackage.git",
+    "arina-shared": "github:adsurkasur/Arina-SharedPackage",
     "esbuild": "^0.25.4",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
     "mongodb": "^6.16.0",
+    "nanoid": "^5.1.5",
+    "path": "^0.12.7",
+    "uuid": "^11.1.0",
     "vite": "^6.3.5",
     "zod": "^3.24.4"
   }
