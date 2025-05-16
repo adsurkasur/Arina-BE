@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build:server": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
-    "postbuild": "cp -r ../client/dist/* ./public/",
-    "build": "npm run build:client && npm run build:server && npm run postbuild",
+    "build": "npm run build:server",
     "start": "NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
