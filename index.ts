@@ -2,16 +2,17 @@
 import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, log } from "./vite";
+import { log } from "./logger";
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Run migrations
 import { migrate } from './migrations';
 migrate().catch(console.error);
-app.use(express.urlencoded({ extended: false }));
 
+// Logging middleware for API requests
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -30,37 +31,27 @@ app.use((req, res, next) => {
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
-
       if (logLine.length > 80) {
         logLine = logLine.slice(0, 79) + "…";
       }
-
       log(logLine);
     }
   });
-
   next();
 });
 
 (async () => {
   const server = await registerRoutes(app);
 
+  // Centralized error handler
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
     res.status(status).json({ message });
-    throw err;
+    // Optionally log the error here
   });
 
-  // Only setup Vite in development. In production, do not serve static frontend files.
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  }
-
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
+  // Serve the app on port 5000
   const port = 5000;
   server.listen({
     port,

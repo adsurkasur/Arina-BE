@@ -1,0 +1,1 @@
+Many dependencies in package.json are frontend-related (React, Radix, Tailwind, etc). For a pure backend, you may want to remove them to keep things clean.

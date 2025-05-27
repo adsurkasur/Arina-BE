@@ -1,0 +1,5 @@
+Next steps:
+- Delete vite.ts and vite.config.ts
+- Optionally clean up frontend dependencies from package.json
+- Use only npm run dev, npm run build, and npm start for backend workflows
+- See README_BACKEND.md for backend usage instructions

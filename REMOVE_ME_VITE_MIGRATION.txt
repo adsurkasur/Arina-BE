@@ -1,0 +1,1 @@
+Vite and related files (vite.ts, vite.config.ts) are no longer needed for backend-only setup. You can safely delete them.
