@@ -1,1 +1,0 @@
-You can now safely delete vite.ts and vite.config.ts from your backend project. If you want a pure backend, also consider removing frontend-related dependencies from package.json.
