@@ -50,6 +50,7 @@
     "cmdk": "latest",
     "connect-pg-simple": "latest",
     "date-fns": "latest",
+    "dotenv": "^16.5.0",
     "drizzle-orm": "latest",
     "drizzle-zod": "latest",
     "embla-carousel-react": "latest",

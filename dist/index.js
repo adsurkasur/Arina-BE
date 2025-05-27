@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import { v4 } from "uuid";
@@ -1165,18 +1166,6 @@ async function setupVite(app2, server) {
 }
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-function serveStatic(app2) {
-  const distPath = path.resolve(__dirname, "public");
-  if (!fs.existsSync(distPath)) {
-    throw new Error(
-      `Could not find the build directory: ${distPath}. Ensure the client is built and the 'public' directory exists in the correct location.`
-    );
-  }
-  app2.use(express.static(distPath));
-  app2.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
-  });
-}
 async function collectionExists(collectionName) {
   const collections = await getDb().listCollections({ name: collectionName }).toArray();
   return collections.length > 0;
@@ -1304,8 +1293,6 @@ app.use((req, res, next) => {
   });
   if (app.get("env") === "development") {
     await setupVite(app, server);
-  } else {
-    serveStatic(app);
   }
   const port = 5e3;
   server.listen({
